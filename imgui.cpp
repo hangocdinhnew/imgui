@@ -966,6 +966,9 @@ CODE
 #include <stdio.h>      // vsnprintf, sscanf, printf
 #include <stdint.h>     // intptr_t
 
+// Valve
+#include "strtools.h"
+
 // [Windows] On non-Visual Studio compilers, we default to IMGUI_DISABLE_WIN32_DEFAULT_IME_FUNCTIONS unless explicitly enabled
 #if defined(_WIN32) && !defined(_MSC_VER) && !defined(IMGUI_ENABLE_WIN32_DEFAULT_IME_FUNCTIONS) && !defined(IMGUI_DISABLE_WIN32_DEFAULT_IME_FUNCTIONS)
 #define IMGUI_DISABLE_WIN32_DEFAULT_IME_FUNCTIONS
@@ -1785,7 +1788,7 @@ void ImStrncpy(char* dst, const char* src, size_t count)
     if (count < 1)
         return;
     if (count > 1)
-        strncpy_s(dst, count, src, count - 1);
+        Q_strncpy(dst, src, count);
     dst[count - 1] = 0;
 }
 
